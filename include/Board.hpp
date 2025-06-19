@@ -17,6 +17,8 @@ public:
     bool isBoardFull() const;
     bool placeMove(int row, int col, char move);
     const std::vector<std::vector<char>> &getBoard() const;
+    int getBoardSize() const;
+    void undoMove(int row, int col);
 };
 
 #endif

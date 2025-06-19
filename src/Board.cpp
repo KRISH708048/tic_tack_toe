@@ -59,3 +59,11 @@ bool Board::placeMove(int row, int col, char move) {
 const std::vector<std::vector<char>>& Board::getBoard() const {
     return board;
 }
+
+int Board::getBoardSize() const{
+    return size;
+}
+
+void Board::undoMove(int row, int col) {
+    board[row][col] = '.';
+}

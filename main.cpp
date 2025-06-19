@@ -34,7 +34,8 @@ int main()
         case 2:
             isAIPlayer = true;
             std::cout << "\nEnter Player 1 name: ";
-            std::cin >> player1name;
+            std::cin.ignore(); 
+            std::getline(std::cin, player1name);
             p1 = new Player(player1name, mv1);
             p2 = new AIPlayer(mv2);
             break;
@@ -56,7 +57,6 @@ int main()
                   << game.getCurrentPlayer()->getMove() << "):\n";
         while (played_by)
         {
-            std::cout << "\nPlayer 1 select you move: ";
             std::cin >> x >> y;
             chance = game.playMove(x, y);
             if (chance == 0)
@@ -79,7 +79,6 @@ int main()
             }
             else
             {
-                std::cout << "\nPlayer 2 select your move: ";
                 std::cin >> x >> y;
                 chance = game.playMove(x, y);
             }
