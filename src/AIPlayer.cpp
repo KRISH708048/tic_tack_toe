@@ -1,10 +1,10 @@
 #include "AIPlayer.hpp"
-#include <limits>
+#include <climits>
 
 AIPlayer::AIPlayer(const char &move) : Player("Computer", move) {}
 
 std::pair<int, int> AIPlayer::getBestMove(Board board) const {
-    int bestScore = std::numeric_limits<int>::min();
+    int bestScore = INT_MIN;
     std::pair<int, int> bestMove = {-1, -1};
     char playerSymbol = (this->getMove() == 'X') ? 'O' : 'X';
     int boardSize = board.getBoardSize();
@@ -27,7 +27,7 @@ std::pair<int, int> AIPlayer::getBestMove(Board board) const {
 }
 
 int AIPlayer::minimax(Board& board, bool isMax, char aiSymbol, char playerSymbol) const {
-    
+
     for (int i = 0; i < board.getBoardSize(); ++i) {
         // Check rows
         if (board.getBoard()[i][0] != '.' &&
@@ -59,7 +59,7 @@ int AIPlayer::minimax(Board& board, bool isMax, char aiSymbol, char playerSymbol
     // Draw
     if (board.isBoardFull()) return 0;
 
-    int bestScore = isMax ? std::numeric_limits<int>::min() : std::numeric_limits<int>::max();
+    int bestScore = isMax ?  INT_MIN : INT_MAX;
 
     for (int i = 0; i < board.getBoardSize(); ++i) {
         for (int j = 0; j < board.getBoardSize(); ++j) {
